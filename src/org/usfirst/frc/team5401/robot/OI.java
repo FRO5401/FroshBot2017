@@ -35,7 +35,8 @@ public class OI {
 	Button xboxR3_Driver		  = new JoystickButton(xboxController_Driver, 10);
 	
 	public OI(){
-		xboxA_Driver.whenPressed(new MotorTurn());
+		xboxA_Driver.whenPressed(new MotorTurn(1));
+		xboxB_Driver.whenPressed(new MotorTurn(-1));
 	}
 	//// TRIGGERING COMMANDS WITH BUTTONS
 	// Once you have a button, it's trivial to bind it to a button in one of

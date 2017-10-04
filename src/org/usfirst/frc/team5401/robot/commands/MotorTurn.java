@@ -7,18 +7,19 @@ import org.usfirst.frc.team5401.robot.Robot;
  *
  */
 public class MotorTurn extends Command {
-
-    public MotorTurn() {
+	int interiorInput;
+    public MotorTurn(int input) {
     	
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveBase);
+        interiorInput = input;
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	 Robot.driveBase.drive( -1, -1);
+    	 Robot.driveBase.drive( -interiorInput, -interiorInput);
     }
 
     // Called repeatedly when this Command is scheduled to run
