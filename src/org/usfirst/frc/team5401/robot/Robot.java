@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5401.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5401.robot.subsystems.ExampleSubsystem;
-
+import org.usfirst.frc.team5401.robot.subsystems.*;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -21,6 +21,9 @@ import org.usfirst.frc.team5401.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static DriveBase driveBase; 
+	
+	
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -32,6 +35,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		driveBase = new DriveBase();
+		
+		
 		oi = new OI();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
