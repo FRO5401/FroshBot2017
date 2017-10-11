@@ -7,34 +7,28 @@ import org.usfirst.frc.team5401.robot.Robot;
  *
  */
 public class MotorTurn extends Command {
-	
-    public MotorTurn() {
+	int interiorInput;
+    public MotorTurn(int input) {
     	
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveBase);
-        
+        interiorInput = input;
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	 
+    	 Robot.driveBase.drive( -interiorInput, -interiorInput);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double throttle = Robot.oi.readYAxisLeftJoyStick();
-    	Robot.driveBase.drive(throttle, throttle);
-    	
-    	/*double slew = Robot.oi.readXAxisLeftJoyStick();
-    	Robot.driveBase.drive(-throttle, throttle);*/
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
