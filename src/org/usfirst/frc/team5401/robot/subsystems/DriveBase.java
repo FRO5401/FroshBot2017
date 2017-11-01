@@ -33,6 +33,26 @@ public class DriveBase extends Subsystem {
 	    	
 	    	
 	 }
+	    public double getVelocity(){
+	    	double velocity = (Math.abs(leftEncoders.getRate()) + Math.abs(rightEncoders.getRate()))/2;
+	    	//For testing
+	    	SmartDashboard.putNumber("Robot Velocity", velocity);
+	    	return velocity;
+	 }
+	 
+	    public double getEncoderDistance(){
+	    	double leftDistanceRaw = leftEncoders.get();
+	    	double rightDistanceRaw = rightEncoders.get();
+	    	SmartDashboard.putNumber("Left Enc Raw", leftDistanceRaw);
+	    	SmartDashboard.putNumber("Right Enc Raw", rightDistanceRaw);
+	    	double leftDistance = leftEncoders.getDistance();
+	    	double rightDistance = rightEncoders.getDistance();
+	    	SmartDashboard.putNumber("Left Enc Adj", leftDistance);
+	    	SmartDashboard.putNumber("Right Enc Adj", rightDistance);
+	    	double encoderDistance = (leftDistance + rightDistance)/2;
+	    	return encoderDistance;
+	    }
+
 	 
 	 public void encoderreading(){
 		 

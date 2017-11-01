@@ -25,12 +25,29 @@ public class MotorTurn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double throttle = Robot.oi.readYAxisLeftJoyStick();
-    	Robot.driveBase.drive(throttle, throttle);
+    	double slew = Robot.oi.readXAxisLeftJoyStick();
     	
-    	/*double slew = Robot.oi.readXAxisLeftJoyStick();
-    	Robot.driveBase.drive(-throttle, throttle);*/
+    	if(slew < -0.6 && slew > -1){
+    		Robot.driveBase.drive(-slew, throttle);
+    	}
+    	if(slew > 0.6 && slew < 1){
+    		Robot.driveBase.drive(slew, -throttle);
+    	}
+        if(throttle < -0.6 && throttle > -1){
+        	Robot.driveBase.drive(slew, -throttle);
+        	}
+        if(throttle > 0.6 && throttle < 1){
+        	Robot.driveBase.drive(slew, -throttle);	
+        	}
+    	else{
     	
-    }
+    	if(throttle < .6 && throttle > -.6 && slew < .6 && slew > -.6 ){
+    		Robot.driveBase.drive(0 , 0);
+    		}
+    	}
+    		
+    	}
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
